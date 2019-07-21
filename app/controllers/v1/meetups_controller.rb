@@ -1,4 +1,6 @@
 class V1::MeetupsController < ApplicationController
+  # before_action :authenticate_user!, except: [:index]
+
   def index
     @meetups = Meetup.all
 
@@ -6,7 +8,9 @@ class V1::MeetupsController < ApplicationController
   end
 
   def create
-    @meetup = Meetup.new(meetup_params)
+
+    # @meetup = Meetup.new(meetup_params)
+    @meetup = current_user.meetups.build(meetup_params)
     @meetup.save
 
     render json: @meetups, status: :created
