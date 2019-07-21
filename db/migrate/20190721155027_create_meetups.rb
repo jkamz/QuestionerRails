@@ -6,6 +6,7 @@ class CreateMeetups < ActiveRecord::Migration[5.1]
       t.string :summary
       t.string :location
       t.datetime :happening_on
+
       t.timestamps
     end
   end
